@@ -1,4 +1,4 @@
-from config.mysqlconnection import MySQLConnection
+from flask_app.config.mysqlconnection import MySQLConnection
 
 class User:
     def __init__(self, data):
