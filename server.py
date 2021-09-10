@@ -21,7 +21,36 @@ def addUser():
         "email" : request.form['email']
     }
     print("data submitted: ", data)
-    User.addUser(data)
+    id = User.addUser(data)
+    return redirect(f'/users/{id}')
+
+@app.route('/users/<int:id>')
+def showUser(id):
+    user = User.getUserById(id)
+    print("User Data: ", user)
+    return render_template("show_user.html", user = user)
+
+@app.route('/users/<int:id>/edit')
+def editUser(id):
+    user = User.getUserById(id)
+    return render_template("edit_user.html", user = user)
+
+@app.route('/users/<int:id>/edit_submit', methods=["POST"])
+def editUserSubmit(id):
+    #Code to submit edits to the database here
+    data = {
+        "id" : id, 
+        "fname" : request.form['fname'],
+        "lname" : request.form['lname'],
+        "email" : request.form['email']
+    }
+    print("The new informaiton for user is: ", data)
+    User.updateUser(data)
+    return redirect(f'/users/{id}')
+
+@app.route('/users/<int:id>/delete')
+def delete(id):
+    User.deleteUser(id)
     return redirect('/')
 
 if(__name__ == "__main__"):

@@ -15,6 +15,8 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
+            <th>Created At:</th>
+            <th>Actions</th>
         </thead>
         <tbody>
             {% for x in users%}
@@ -22,6 +24,12 @@
                 <td>{{x.first_name}}</td>
                 <td>{{x.last_name}}</td>
                 <td>{{x.email}}</td>
+                <td>{{x.created_at}}</td>
+                <td>
+                    <a href="/users/{{x.id}}"">Show</a> 
+                    <a href="/users/{{x.id}}/edit">Edit</a>
+                    <a href="/users/{{x.id}}/delete">Delete</a>
+                </td>
             </tr>
             {% endfor%}
         </tbody>

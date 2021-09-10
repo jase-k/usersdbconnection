@@ -1,0 +1,14 @@
+.row{
+    display: flex;
+    border-bottom: 2px solid black;
+}
+
+.row *{
+    margin: 10px;
+}
+
+.box{
+    border: 2px solid black;
+    width: 50%;
+    margin: auto;
+}
